@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <meta charset="UTF-8">
+
+    <link href="/static/bootstrap.css" rel="stylesheet" method="post">
+    <div class ="center-screen">
+        <div class = "card" style="width: 30rem;">
+                <div class="card-body">
+                    <div id = "root">
+                        <title class="card-title">Password Login</title>
+                        <p></p>
+                        <h2>Password Login Tester</h2>
+                        <h5 class = "card-subtitle mb-2 text-muted"> A little password database manager :^)</h5>
+                        <script>
+                            function success() {
+                                window.open('success.html','_self')
+                            }
+                        </script>
+                        <form method="POST" action="">
+                            {{ form.hidden_tag() }}
+                            <label for="username">Username</label>
+                            <p></p>
+                            {{ form.username }}
+                            <p></p>
+                            <label for="password">Password</label>
+                            <p></p>
+                            {{ form.password }}
+                            <p></p>
+                            {{ form.submit }}
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+</head>
+<body>
+
+</body>
+</html>
