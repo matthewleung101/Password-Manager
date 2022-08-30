@@ -29,6 +29,7 @@ class LoginForm(FlaskForm):
 
     submit = SubmitField("Login")
 
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
@@ -55,10 +56,8 @@ def home():
 @app.route('/success', methods=['GET','POST'])
 @login_required
 def success():
+    logout1 = logout()
     return render_template('success.html')
-
-def dashboard():
-    return render_template('dashboard.html')
 
 @app.route('/register', methods=['GET','POST'])
 def register():
@@ -69,11 +68,11 @@ def register():
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('login'))
-
     return render_template('register.html', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    error=None
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -81,7 +80,11 @@ def login():
             if bcrypt.check_password_hash(user.password, form.password.data):
                 login_user(user)
                 return redirect(url_for('success'))
-    return render_template('login.html', form=form)
+            else:
+                error = 'error'
+        else:
+            error = 'error'
+    return render_template('login.html', form=form, error=error)
 
 @app.route('/logout', methods=['GET','POST'])
 @login_required

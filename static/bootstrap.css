@@ -3790,6 +3790,7 @@ textarea.form-control-lg {
   flex-wrap: inherit;
   align-items: center;
   justify-content: space-between;
+  outline: 5px black;
 }
 .navbar-brand {
   padding-top: var(--bs-navbar-brand-padding-y);

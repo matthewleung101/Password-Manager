@@ -11,26 +11,24 @@
                         <p></p>
                         <h2>Password Login Tester</h2>
                         <h5 class = "card-subtitle mb-2 text-muted"> A little password database manager :^)</h5>
-                        <script>
-                            function success() {
-                                window.open('success.html','_self')
-                            }
-                        </script>
                         <form method="POST" action="">
                             {{ form.hidden_tag() }}
                             <label for="username">Username</label>
                             <p></p>
-                            {{form.username}}
+                            {{ form.username }}
                             <p></p>
                             <label for="password">Password</label>
                             <p></p>
-                            {{form.password}}
+                            {{ form.password }}
                             <p></p>
-                            {{form.submit}}
+                            {{ form.submit }}
                         </form>
                         {% if error %}
-                            <p class = "error"><strong>Error!</strong> {{ error }}
+                            <ul class="errors">There has been an error with the username or password. Please try again!</ul>
                         {% endif %}
+                    </div>
+                    <div class="container-md">
+                        <h4><a href="{{ url_for('register') }}">Haven't Registered Yet? Click here to Register!</a></h4>
                     </div>
                 </div>
         </div>
